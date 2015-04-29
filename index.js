@@ -4,7 +4,11 @@ _ = require('lodash');
 
 var argv = require('minimist')(process.argv.slice(2));
 
-defaults = {milliseconds:1000,queue:false};
+defaults = {
+    milliseconds:1000,
+    "max-queue":1000,
+    queue:false
+};
 
 argv = _.merge(defaults,argv)
 
@@ -23,7 +27,8 @@ var Throttler = function(options){
         checkFinished();
     }
     this.pushLine=function(line){
-        this.lines.push(line);
+        if (self.lines.length<argv["max-queue"])
+            this.lines.push(line);
     }
     var checkFinished=function(){
         if (self.lines.length==0 && self.finished) {
