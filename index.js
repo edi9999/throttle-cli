@@ -5,12 +5,21 @@ _ = require('lodash');
 var argv = require('minimist')(process.argv.slice(2));
 
 defaults = {
-    milliseconds:1000,
+    milliseconds:300,
     "max-queue":1000,
-    queue:false
+    queue:true
 };
 
 argv = _.merge(defaults,argv)
+
+if (argv.m)
+    argv.milliseconds=argv.m;
+
+if (argv.q)
+    argv.queue=argv.q;
+
+if (argv.x)
+    argv["max-queue"]=argv.x;
 
 process.stdin.resume();
 process.stdin.setEncoding('utf8');
