@@ -2,7 +2,7 @@
 
 `throttle` is a command line interface to throttle stdin to stdout.
 
-It can be for example be used like this:
+It can be for example used to view logs like this:
 
     # Shows a line every 300ms max (default)
     tail -f | throttle
