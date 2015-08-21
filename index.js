@@ -60,7 +60,7 @@ var Throttler = function(options){
         }
         return false;
     }
-    setInterval(processLine,options.milliseconds);
+    setInterval(processLine, 10);
 }
 
 throttler = new Throttler(argv);
